@@ -1,12 +1,17 @@
+print(".")
+print(".")
+print("Hello!, I am your task manager!")
+print("--------------------------------")
+print("You may enter '--QUIT' at anytime to exit the program")
+
+
+
+
 class User:
     def __init__(self, first_name, last_name, user_name):
         self.first_name = first_name
         self.last_name = last_name
         self.user_name = user_name
-
-
-
-
 
 
 class Task:
@@ -27,13 +32,16 @@ class Task:
         print(self.task_list)
 
 
+
 def print_list():
     print(task_list)
 
-def remove_task(task):
+
+def remove_task():
     print(task_list)
-    item_number = input("choose item place in list by number. First task equals number 1: ")
-    task_list.remove(task)
+    item_number = int(input("choose item place in list by number. First task equals number 1: "))
+    task_list.remove(task_list[item_number-1])
+
     i = 0
     for item in task_list:
         if (i == task_list[i]):
@@ -43,11 +51,6 @@ def remove_task(task):
         i += 1
 
 
-print(".")
-print(".")
-print("Hello!, I am your task manager!")
-print("--------------------------------")
-print("You may enter '--QUIT' at anytime to exit the program")
 
 def begin():
     start = input("Enter '--BEGIN' to begin, or '--HELP' for more options: ")
@@ -121,7 +124,8 @@ task_list = []
 def enter_task():
     while True:
         try:
-
+            
+            #Task Title
             print("Enter your task and priority. Enter '--QUIT' at anytime to end the program.")
             print("---Task Title---")
             title = input("Enter task title: ")
@@ -132,6 +136,8 @@ def enter_task():
                 user_options()
                 break
 
+
+            #task priority
             print("---Priority levels---")
             print("1 = HIGH")
             print("2 = MODERATE")
@@ -153,11 +159,11 @@ def enter_task():
 
             print(task_list)
 
-            end_list = input("Press '--CONTINUE' to continue entering tasks. Type '--FINISH' to finish entering tasks: ")
+            end_list = input("Enter '--CONTINUE' to continue entering tasks. Type '--FINISH' to finish entering tasks: ")
             if (end_list.lower() == '--quit'):
                 print(task_list)
                 break
-            if (title.lower() == "--help"):
+            if (end_list.lower() == "--help"):
                 user_options()
                 break
             if (end_list.lower() == "--finish"):
@@ -168,7 +174,6 @@ def enter_task():
                 break
             if (end_list.lower() == '--continue'):
                 print(task_list)
-                return task_list
             else:
                 print("Rewrite task")
                 enter_task()
@@ -178,4 +183,5 @@ def enter_task():
 
 begin()
 
-
+user_options()
+print_list()
